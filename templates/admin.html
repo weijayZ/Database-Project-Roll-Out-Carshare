@@ -1,0 +1,110 @@
+<div class="content">
+  <h2>Administrator</h2>
+  <div class="querybox">
+    <h3>Projection Query</h3>
+    <p>What data would you like returned from the table Customer?</p>
+    <form action="pQuery.php" method="get" name="pquery">
+      <input type="radio" name="type" value="cAddress" checked> Address<br>
+      <input type="radio" name="type" value="PhoneNum"> Phone Number<br>
+      <input type="radio" name="type" value="Email"> Email<br>
+    <button class="logB" type="submit">Query it!</button>
+    </form>
+  </div>
+  <div class="querybox">
+    <h3>Selection Query</h3>
+    <form action="pQuery1.php" method="get" name="pquery1">
+      <p>Find Vehicle with mileage that matches</p>
+      <label class="input-group-addon">Min: </span>
+        <input type="text" name="min" placeholder="0"><br>
+      <label class="input-group-addon" id="basic-addon1">Max: </span>
+      <input type="text" name="max" placeholder="20000">
+    <button class="logB" type="submit">Query it!</button>
+    </form>
+  </div>
+  <div class="querybox">
+    <h3>Join Query</h3>
+    <p>Find the names of all customers that have rented a car</p>
+    <form action="pQuery2.php" method="get" name="pquery2">
+      <button class="logB" type="submit">Query it!</button>
+    </form>
+  </div>
+  <div class="querybox">
+    <h3>Division Query</h3>
+    <p>Find the employee that has maintained every car</p>
+    <form action="pQuery3.php" method="get" name="pquery3">
+      <button class="logB" type="submit">Query it!</button>
+    </form>
+  </div>
+  <div class="querybox">
+    <h3>Aggregation Query</h3>
+    <p>Find the vehicle with the maximum amount of mileage</p>
+    <form action="pQuery4.php" method="get" name="pquery4">
+      <button class="logB" type="submit">Query it!</button>
+    </form>
+  </div>
+  <div class="querybox">
+    <h3>Aggregation Query 2</h3>
+    <p>Find the count of cars there are in the system</p>
+    <form action="pQuery5.php" method="get" name="pquery5">
+      <button class="logB" type="submit">Query it!</button>
+    </form>
+  </div>
+  <div class="querybox">
+    <h3>Nested Aggregation Query</h3>
+    <p>Average mileage for each vehicle type</p>
+    <form action="pQuery6.php" method="get" name="pquery6">
+      <button class="logB" type="submit">Query it!</button>
+    </form>
+  </div>
+  <div class="querybox">
+    <h3>Deletion Query</h3>
+    <form action="pQuery7.php" method="get" name="pquery7">
+      <p>Delete Customer: </p>
+      <label class="input-group-addon" id="basic-addon1">Customer ID: </span>
+        <input type="text" name="username" placeholder="C000000001"><br>
+    <button class="logB" type="submit">Query it!</button>
+    </form>
+  </div>
+  <table class="pTable">
+      <tr>
+          {% for t in th1 %}
+          <th>{{t}}</th>
+          {% endfor %}
+      </tr>
+      {% for p in user %}
+      <tr>
+          {% for this in p %}
+          {% autoescape false %}
+          <td>{{this}}</td>
+          {% endautoescape %}
+         {% endfor %}
+      </tr>
+      {% endfor %}
+  </table>
+  <div class="querybox">
+    <h3>Update Query</h3>
+    <p>Update Condition of car</p>
+    <form action="pQuery8.php" method="get" name="pquery8">
+      <label class="input-group-addon">Car ID: </span>
+        <input type="text" name="carid" placeholder="813XTH"><br>
+      <label class="input-group-addon" id="basic-addon1">Condition: </span>
+      <input type="text" name="cond" placeholder="Acceptable">
+    <button class="logB" type="submit">Query it!</button>
+  </div>
+  <table class="pTable">
+      <tr>
+          {% for c in th2 %}
+          <th>{{c}}</th>
+          {% endfor %}
+      </tr>
+      {% for p in cars %}
+      <tr>
+          {% for this in p %}
+          {% autoescape false %}
+          <td>{{this}}</td>
+          {% endautoescape %}
+         {% endfor %}
+      </tr>
+      {% endfor %}
+  </table>
+</div>

@@ -1,0 +1,19 @@
+<div class="content">
+  <h2>{{type}}</h2>
+  <table class="pTable">
+      <tr>
+          {% for t in th %}
+          <th>{{t}}</th>
+          {% endfor %}
+      </tr>
+      {% for p in product %}
+      <tr>
+          {% for this in p %}
+          {% autoescape false %}
+          <td>{{this}}</td>
+          {% endautoescape %}
+         {% endfor %}
+      </tr>
+      {% endfor %}
+  </table>
+</div>

@@ -1,0 +1,104 @@
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS myProc //
+CREATE PROCEDURE myProc()
+BEGIN
+SELECT DISTINCT Make, Model, VehicleImage FROM cars;
+END //
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS myProc1//
+CREATE PROCEDURE myProc1(p1 VARCHAR(255))
+BEGIN
+SELECT Customer_ID, FirstName, p1 FROM Customer;
+END //
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS myProc2 //
+CREATE PROCEDURE  myProc2 (p1 VARCHAR(10))
+BEGIN
+SELECT DISTINCT Make, Model, VehicleImage FROM cars
+WHERE VehicleType = p1;
+END//
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS profile//
+CREATE PROCEDURE profile (param1 VARCHAR(10))
+BEGIN
+SELECT * FROM customer
+WHERE Customer_ID = param1;
+END//
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS admin//
+CREATE PROCEDURE admin (param1 VARCHAR(10))
+BEGIN
+SELECT * FROM Administrator
+WHERE  StaffID = param1;
+END//
+
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS usedCar//
+CREATE PROCEDURE usedCar (param1 VARCHAR(10))
+BEGIN
+SELECT d.Car_ID, d.make, d.model
+FROM customer c, lease l, cars d
+WHERE c.Customer_ID = l.Customer_ID
+AND l.Car_ID = d.Car_ID
+AND c.Customer_ID = param1;
+END//
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS leases//
+CREATE PROCEDURE leases (param1 VARCHAR(10))
+BEGIN
+SELECT *
+FROM lease
+WHERE Customer_ID = param1;
+END//
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS bills//
+CREATE PROCEDURE bills(param1 VARCHAR(10))
+BEGIN
+SELECT *
+FROM invoice
+INNER JOIN billed ON invoice.InvoiceNum = billed.InvoiceNum
+WHERE Customer_ID = param1;
+END//
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS findCars //
+CREATE PROCEDURE  findCars (p1 VARCHAR(6))
+BEGIN
+SELECT Car_ID, Make, Model, VehicleImage
+FROM cars
+WHERE placedLocation = p1
+AND inUse = 0;
+END//
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS used //
+CREATE PROCEDURE  used (p1 VARCHAR(6))
+BEGIN
+UPDATE cars
+SET inUse = '1'
+WHERE Car_ID = p1;
+END//
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS scheduleAdd //
+CREATE PROCEDURE  scheduleAdd (p1 date, p2 time, p3 time, p4 int(11), p5 VARCHAR(10), p6 VARCHAR(6), p7 VARCHAR(6), p8 VARCHAR(6))
+BEGIN
+INSERT INTO Scheduler
+VALUES(p1, p2, p3, p4, p5,p6, p7, p8);
+END//
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS del //
+CREATE PROCEDURE  del (p1 VARCHAR(10))
+BEGIN
+DELETE FROM Customers
+WHERE Customer_ID = p1;
+END//

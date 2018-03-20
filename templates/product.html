@@ -1,0 +1,23 @@
+<div class="sideways">
+	<div class="vNav">
+    <ul>
+        {% for item in menu %}
+        <li><a href='{{item[1]}}'>{{item[0]}}</a></li>
+        {% endfor %}
+    </ul>
+
+	</div>
+
+	<div class="content">
+		<h2>{{type}}</h2>
+		 <div class="carShow">
+		{% for p in product %}
+			<div class="car">
+			  <img src="{{p[2]}}" class="smCarpic" alt="car image">
+			  <h4>{{p[0]}} {{p[1]}}</h4>
+			</div>
+		  {% endfor %}
+		</div>
+	  </table>
+	</div>
+</div>

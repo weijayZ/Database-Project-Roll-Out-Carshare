@@ -1,0 +1,36 @@
+<div class="content">
+		<h2>{{type}}</h2>
+		 <div class="carShow">
+		{% for p in product %}
+			<div class="car">
+			  <img src="{{p[2]}}" class="smCarpic" alt="car image">
+			  <h4>{{p[0]}} {{p[1]}}</h4>
+
+				<form action="rented.php" method="get" name="form{{p[3]}}">
+					<table>
+						<tr>
+							<td><label>Start Time: </label></td>
+							<td><input type="text" name="start" id="inputPassword" placeholder="15:00:00" required/></td>
+						</tr>
+						<tr>
+							<td><label>Duration: </label></td>
+							<td><input type="text" name="dur" id="inputPassword" placeholder="15:00:00" required/></td>
+							</tr>
+							<tr>
+							<td><label>Date: </label></td>
+							<td><input type="text" name="date" id="inputPassword" placeholder="2017-11-021" required/></td>
+						</tr>
+						<tr>
+							<td><label>Destination: </label></td>
+							<td><input type="text" name="dest" id="inputPassword" placeholder="000001" required/></td>
+					</tr>
+					</table>
+						<input type="hidden" name="loc" value="{{loc}}" />
+						<input type="hidden" name="car" value="{{p[3]}}" />
+			    	<button class="logB" type="submit">Rent</button>
+				</form>
+			</div>
+		  {% endfor %}
+		</div>
+	  </table>
+</div>

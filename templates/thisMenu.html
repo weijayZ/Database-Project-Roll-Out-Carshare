@@ -1,0 +1,7 @@
+<nav>
+    <ul class="crossList">
+        {% for item in menu %}
+        <li><a href='{{item[1]}}'>{{item[0]}}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
